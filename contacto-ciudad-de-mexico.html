@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agenda tu Cita | Ginecólogo CDMX Dr. Omar Tirado Aguilar</title>
+  <meta name="description" content="Agenda tu cita con el Dr. Omar Alberto Tirado Aguilar en Ciudad de México. Ginecólogo, Obstetra y Subespecialista en Medicina Materno Fetal. Citas y urgencias 24 horas por WhatsApp al 445 113 37 56.">
+  <meta name="keywords" content="agendar cita ginecólogo Ciudad de México, contacto Dr. Omar Tirado, WhatsApp ginecólogo CDMX, citas obstétricas, medicina materno fetal">
+  <meta name="author" content="Dr. Omar Alberto Tirado Aguilar">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="contacto-ciudad-de-mexico.html">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Agenda tu Cita | Ginecólogo CDMX Dr. Omar Tirado Aguilar">
+  <meta property="og:description" content="Citas y urgencias 24 horas en Ciudad de México con subespecialista en Medicina Materno Fetal.">
+  <meta property="og:image" content="imagen29.jpg">
+  <meta property="og:locale" content="es_MX">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="logo.png">
+  <link rel="apple-touch-icon" href="logo.png">
+
+  <!-- Fuentes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="global.css">
+
+  <!-- CSS específico del formulario -->
+  <style>
+    .contacto-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 60px;
+      align-items: start;
+    }
+
+    .contacto-info-card {
+      background: var(--color-blanco);
+      border-radius: var(--radius-lg);
+      padding: 40px;
+      box-shadow: var(--sombra-card);
+      border: 1px solid var(--color-azul-hielo);
+      margin-bottom: 24px;
+    }
+
+    .contacto-info-item {
+      display: flex;
+      gap: 16px;
+      padding: 18px 0;
+      border-bottom: 1px solid var(--color-azul-hielo);
+    }
+
+    .contacto-info-item:last-child {
+      border-bottom: none;
+    }
+
+    .contacto-info-icon {
+      width: 48px;
+      height: 48px;
+      flex-shrink: 0;
+      border-radius: 50%;
+      background: var(--gradiente-suave);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+    }
+
+    .contacto-info-texto h4 {
+      font-size: 1rem;
+      margin-bottom: 4px;
+      color: var(--color-azul-marino);
+    }
+
+    .contacto-info-texto p, .contacto-info-texto a {
+      font-size: 0.95rem;
+      color: var(--color-gris-texto);
+      margin: 0;
+      line-height: 1.6;
+    }
+
+    .contacto-info-texto a:hover {
+      color: var(--color-azul-royal);
+    }
+
+    .formulario-card {
+      background: var(--color-blanco);
+      border-radius: var(--radius-lg);
+      padding: 48px;
+      box-shadow: var(--sombra-card);
+      border: 1px solid var(--color-azul-hielo);
+    }
+
+    .formulario-card h3 {
+      margin-bottom: 8px;
+      color: var(--color-azul-marino);
+    }
+
+    .formulario-card > p {
+      margin-bottom: 32px;
+      color: var(--color-gris-texto);
+    }
+
+    .form-group {
+      margin-bottom: 22px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--color-azul-marino);
+      margin-bottom: 8px;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 14px 18px;
+      font-family: var(--fuente-cuerpo);
+      font-size: 0.95rem;
+      color: var(--color-gris-texto);
+      background: var(--color-crema);
+      border: 1.5px solid var(--color-azul-hielo);
+      border-radius: var(--radius-sm);
+      transition: var(--transicion-rapida);
+      outline: none;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--color-azul-royal);
+      background: var(--color-blanco);
+      box-shadow: 0 0 0 4px rgba(61, 78, 158, 0.1);
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 120px;
+      font-family: var(--fuente-cuerpo);
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .form-submit {
+      width: 100%;
+      margin-top: 12px;
+      padding: 18px 32px;
+      font-size: 1.05rem;
+    }
+
+    .form-nota {
+      margin-top: 20px;
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--color-gris-suave);
+    }
+
+    @media (max-width: 900px) {
+      .contacto-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+      .formulario-card {
+        padding: 32px 24px;
+      }
+      .contacto-info-card {
+        padding: 28px 24px;
+      }
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+
+  <!-- Schema: MedicalBusiness -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "MedicalBusiness",
+    "name": "Agenda tu Cita - Dr. Omar Alberto Tirado Aguilar en Ciudad de México",
+    "description": "Contacto y agenda de citas con el Dr. Omar Tirado Aguilar, Ginecólogo y Subespecialista en Medicina Materno Fetal en Ciudad de México. Atención en cuatro consultorios privados.",
+    "image": "profesional.png",
+    "logo": "logo.png",
+    "url": "contacto-ciudad-de-mexico.html",
+    "telephone": "+524451133756",
+    "email": "omar_0693@hotmail.com",
+    "priceRange": "$$",
+    "medicalSpecialty": ["Gynecology", "Obstetrics", "MaternalFetalMedicine"],
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+        "description": "Consultas previa cita. Urgencias 24 horas por WhatsApp."
+      }
+    ],
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+524451133756",
+      "contactType": "customer service",
+      "availableLanguage": ["Spanish"],
+      "hoursAvailable": "24/7"
+    },
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Ciudad de México",
+      "addressRegion": "Ciudad de México",
+      "addressCountry": "MX"
+    }
+  }
+  </script>
+
+  <!-- Schema: BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type": "ListItem", "position": 1, "name": "Inicio", "item": "index.html"},
+      {"@type": "ListItem", "position": 2, "name": "Contacto", "item": "contacto-ciudad-de-mexico.html"}
+    ]
+  }
+  </script>
+</head>
+<body>
+
+<!-- Navbar -->
+<div id="navbar-placeholder"></div>
+
+<!-- PAGE HEADER -->
+<section class="page-header">
+  <div class="page-header-content">
+    <nav class="breadcrumbs" aria-label="Migas de pan">
+      <a href="index.html">Inicio</a>
+      <span class="breadcrumbs-separator">›</span>
+      <span>Agenda tu Cita</span>
+    </nav>
+    <h1>Agenda tu Cita en Ciudad de México</h1>
+    <p class="page-header-subtitle">
+      Contáctanos para agendar tu consulta con el Dr. Omar Alberto Tirado Aguilar. Atención ginecológica y Medicina Materno Fetal en cuatro consultorios. Citas y urgencias 24 horas.
+    </p>
+  </div>
+</section>
+
+<!-- CONTACTO PRINCIPAL -->
+<section class="section">
+  <div class="container">
+    <div class="contacto-grid fade-in">
+
+      <!-- INFO DE CONTACTO -->
+      <div>
+        <span class="section-pretitle">Datos de contacto</span>
+        <h2 style="margin-bottom: 20px;">Formas de agendar tu cita</h2>
+        <p style="color: var(--color-gris-texto); margin-bottom: 32px;">
+          Elige la forma más cómoda para ti. La vía más rápida es WhatsApp, disponible las 24 horas para citas y urgencias. Si prefieres, también puedes utilizar el formulario de esta página.
+        </p>
+
+        <div class="contacto-info-card">
+          <div class="contacto-info-item">
+            <div class="contacto-info-icon">💬</div>
+            <div class="contacto-info-texto">
+              <h4>WhatsApp · Citas y Urgencias 24h</h4>
+              <p><a href="https://wa.me/524451133756?text=Hola%20Dr.%20Omar%2C%20me%20gustar%C3%ADa%20agendar%20una%20cita." target="_blank" rel="noopener"><strong>+52 445 113 37 56</strong></a></p>
+              <p style="font-size: 0.85rem; color: var(--color-gris-suave); margin-top: 4px;">La vía más rápida de respuesta</p>
+            </div>
+          </div>
+
+          <div class="contacto-info-item">
+            <div class="contacto-info-icon">📞</div>
+            <div class="contacto-info-texto">
+              <h4>Teléfono directo</h4>
+              <p><a href="tel:+524451133756"><strong>+52 445 113 37 56</strong></a></p>
+              <p style="font-size: 0.85rem; color: var(--color-gris-suave); margin-top: 4px;">Llamadas en horario de consulta</p>
+            </div>
+          </div>
+
+          <div class="contacto-info-item">
+            <div class="contacto-info-icon">✉</div>
+            <div class="contacto-info-texto">
+              <h4>Correo electrónico</h4>
+              <p><a href="mailto:omar_0693@hotmail.com"><strong>omar_0693@hotmail.com</strong></a></p>
+              <p style="font-size: 0.85rem; color: var(--color-gris-suave); margin-top: 4px;">Para envío de estudios y consultas formales</p>
+            </div>
+          </div>
+
+          <div class="contacto-info-item">
+            <div class="contacto-info-icon">📍</div>
+            <div class="contacto-info-texto">
+              <h4>Ciudad</h4>
+              <p><strong>Ciudad de México, México</strong></p>
+              <p style="font-size: 0.85rem; color: var(--color-gris-suave); margin-top: 4px;"><a href="consultorios-ciudad-de-mexico.html">Ver los 4 consultorios →</a></p>
+            </div>
+          </div>
+
+          <div class="contacto-info-item">
+            <div class="contacto-info-icon">⏰</div>
+            <div class="contacto-info-texto">
+              <h4>Horarios</h4>
+              <p>Consultas previa cita de lunes a sábado</p>
+              <p style="font-size: 0.85rem; color: var(--color-gris-suave); margin-top: 4px;">WhatsApp para urgencias todos los días 24 horas</p>
+            </div>
+          </div>
+        </div>
+
+        <a href="https://wa.me/524451133756?text=Hola%20Dr.%20Omar%2C%20me%20gustar%C3%ADa%20agendar%20una%20cita." target="_blank" rel="noopener" class="btn btn-whatsapp" style="width: 100%; justify-content: center; padding: 18px;">
+          💬 Agendar ahora por WhatsApp
+        </a>
+      </div>
+
+      <!-- FORMULARIO -->
+      <div class="formulario-card">
+        <span class="section-pretitle">Formulario de contacto</span>
+        <h3 style="font-size: 1.6rem;">Cuéntanos cómo podemos ayudarte</h3>
+        <p>
+          Completa tus datos y te contactaremos para agendar tu cita. El formulario se envía directamente por WhatsApp para respuesta inmediata.
+        </p>
+
+        <form id="contactoForm" onsubmit="enviarWhatsApp(event)">
+          <div class="form-group">
+            <label for="nombre">Nombre completo <span style="color: var(--color-azul-royal);">*</span></label>
+            <input type="text" id="nombre" name="nombre" required placeholder="Tu nombre completo">
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="telefono">Teléfono <span style="color: var(--color-azul-royal);">*</span></label>
+              <input type="tel" id="telefono" name="telefono" required placeholder="55 1234 5678">
+            </div>
+            <div class="form-group">
+              <label for="email">Correo electrónico</label>
+              <input type="email" id="email" name="email" placeholder="tu@email.com">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="motivo">Motivo de consulta <span style="color: var(--color-azul-royal);">*</span></label>
+            <select id="motivo" name="motivo" required>
+              <option value="">Selecciona una opción</option>
+              <option value="Check Up Ginecológico">Check Up Ginecológico</option>
+              <option value="Consulta Ginecológica Integral">Consulta Ginecológica Integral</option>
+              <option value="Asesoría Anticonceptiva">Asesoría Anticonceptiva</option>
+              <option value="Control Prenatal">Control Prenatal</option>
+              <option value="Embarazo de Alto Riesgo">Embarazo de Alto Riesgo</option>
+              <option value="Embarazo Gemelar o Múltiple">Embarazo Gemelar o Múltiple</option>
+              <option value="Ultrasonido Primer Trimestre">Ultrasonido Primer Trimestre</option>
+              <option value="Ultrasonido Estructural Segundo Trimestre">Ultrasonido Estructural Segundo Trimestre</option>
+              <option value="Ultrasonido Tercer Trimestre Doppler">Ultrasonido Tercer Trimestre / Doppler</option>
+              <option value="Segunda opinión de ultrasonido">Segunda opinión de ultrasonido</option>
+              <option value="Envío de estudios para revisión">Envío de estudios para revisión</option>
+              <option value="Otra consulta">Otra consulta</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="consultorio">Consultorio preferido</label>
+            <select id="consultorio" name="consultorio">
+              <option value="">Sin preferencia / Aún por definir</option>
+              <option value="Hospital Ángeles Mocel">Hospital Ángeles Mocel (Miguel Hidalgo)</option>
+              <option value="Hospital Ángeles Pedregal">Hospital Ángeles Pedregal (Magdalena Contreras)</option>
+              <option value="Hospital Ángeles Lindavista">Hospital Ángeles Lindavista (Gustavo A. Madero)</option>
+              <option value="Hospital Bité Médica Santa Fe">Hospital Bité Médica Santa Fe (Álvaro Obregón)</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="mensaje">Mensaje adicional</label>
+            <textarea id="mensaje" name="mensaje" placeholder="Cuéntanos un poco más sobre tu caso, semanas de embarazo si aplica, estudios previos, antecedentes relevantes u horarios preferidos..."></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-whatsapp form-submit">
+            💬 Enviar por WhatsApp
+          </button>
+
+          <p class="form-nota">
+            Al enviar, se abrirá WhatsApp con tu mensaje prellenado para que lo confirmes y envíes al Dr. Omar Tirado.
+          </p>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- QUÉ INCLUIR EN TU MENSAJE -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-header fade-in">
+      <span class="section-pretitle">Para una respuesta más rápida</span>
+      <h2 class="section-title">Qué información es útil incluir en tu mensaje</h2>
+      <p class="section-subtitle">
+        Mientras más contexto nos compartas en tu primer mensaje, mejor podremos orientarte sobre consultorio, horario y preparación necesaria.
+      </p>
+    </div>
+
+    <div class="servicio-beneficios">
+      <div class="beneficio-card fade-in">
+        <div class="beneficio-numero">01</div>
+        <h4>Tu nombre y teléfono</h4>
+        <p>Datos básicos para identificarte y poder contactarte si se requiere confirmación adicional sobre tu cita o envío de documentos previos.</p>
+      </div>
+      <div class="beneficio-card fade-in">
+        <div class="beneficio-numero">02</div>
+        <h4>Motivo de consulta</h4>
+        <p>Si es consulta ginecológica, control prenatal, ultrasonido específico, segunda opinión o valoración por factores de riesgo. Esto permite asignar tiempo adecuado.</p>
+      </div>
+      <div class="beneficio-card fade-in">
+        <div class="beneficio-numero">03</div>
+        <h4>Semanas de embarazo</h4>
+        <p>Si estás embarazada, comparte la fecha de última menstruación o las semanas actuales. Es fundamental para definir qué estudios corresponden a tu momento.</p>
+      </div>
+      <div class="beneficio-card fade-in">
+        <div class="beneficio-numero">04</div>
+        <h4>Antecedentes relevantes</h4>
+        <p>Condiciones médicas actuales, antecedentes obstétricos, embarazos previos, cirugías o cualquier dato clínico que consideres importante mencionar.</p>
+      </div>
+      <div class="beneficio-card fade-in">
+        <div class="beneficio-numero">05</div>
+        <h4>Consultorio de preferencia</h4>
+        <p>Si tienes preferencia por alguna de las cuatro sedes (Mocel, Pedregal, Lindavista o Santa Fe) menciónalo. Si no, te orientamos sobre la más conveniente.</p>
+      </div>
+      <div class="beneficio-card fade-in">
+        <div class="beneficio-numero">06</div>
+        <h4>Horarios disponibles</h4>
+        <p>Indica las franjas horarias que mejor se ajustan a ti entre semana o sábados, para proponerte opciones de agenda que encajen con tu disponibilidad.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ACCESOS RÁPIDOS -->
+<section class="section">
+  <div class="container">
+    <div class="section-header fade-in">
+      <span class="section-pretitle">Accesos rápidos</span>
+      <h2 class="section-title">Otras secciones que pueden interesarte</h2>
+      <p class="section-subtitle">
+        Antes de tu cita puedes explorar información sobre los servicios, los consultorios o resolver dudas frecuentes.
+      </p>
+    </div>
+
+    <div class="diferenciadores">
+      <a href="consultorios-ciudad-de-mexico.html" style="text-decoration: none;">
+        <div class="diferenciador-card fade-in">
+          <div class="diferenciador-icon">📍</div>
+          <h3>Consultorios</h3>
+          <p>Conoce los cuatro consultorios con sus ubicaciones exactas, mapas y datos de contacto específicos de cada sede.</p>
+        </div>
+      </a>
+      <a href="sobre-mi-ciudad-de-mexico.html" style="text-decoration: none;">
+        <div class="diferenciador-card fade-in">
+          <div class="diferenciador-icon">🎓</div>
+          <h3>Sobre el Dr. Omar</h3>
+          <p>Formación académica, afiliaciones profesionales, publicaciones y trayectoria del Dr. Omar Alberto Tirado Aguilar.</p>
+        </div>
+      </a>
+      <a href="preguntas-frecuentes-ciudad-de-mexico.html" style="text-decoration: none;">
+        <div class="diferenciador-card fade-in">
+          <div class="diferenciador-icon">❓</div>
+          <h3>Preguntas Frecuentes</h3>
+          <p>Respuestas a las dudas más comunes sobre ginecología, embarazo, ultrasonidos y Medicina Materno Fetal.</p>
+        </div>
+      </a>
+      <a href="envio-estudios-ciudad-de-mexico.html" style="text-decoration: none;">
+        <div class="diferenciador-card fade-in">
+          <div class="diferenciador-icon">📎</div>
+          <h3>Envío de Estudios</h3>
+          <p>Proceso para enviar tus estudios previos (ultrasonidos, laboratorios) antes de la consulta para una revisión anticipada.</p>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="cta-final">
+  <div class="cta-final-content">
+    <h2>No esperes para cuidar tu salud</h2>
+    <p>
+      El Dr. Omar Tirado está disponible por WhatsApp las 24 horas para atender tus dudas y agendar tu cita en Ciudad de México.
+    </p>
+    <div class="cta-final-botones">
+      <a href="https://wa.me/524451133756?text=Hola%20Dr.%20Omar%2C%20me%20gustar%C3%ADa%20agendar%20una%20cita." target="_blank" rel="noopener" class="btn btn-whatsapp">
+        💬 Agendar por WhatsApp
+      </a>
+      <a href="tel:+524451133756" class="btn btn-primary">
+        📞 Llamar directamente
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<div id="footer-placeholder"></div>
+
+<!-- WhatsApp flotante -->
+<div id="whatsapp-placeholder"></div>
+
+<!-- Scripts -->
+<script src="components-loader.js"></script>
+
+<!-- Script del formulario -->
+<script>
+function enviarWhatsApp(event) {
+  event.preventDefault();
+
+  const nombre = document.getElementById('nombre').value.trim();
+  const telefono = document.getElementById('telefono').value.trim();
+  const email = document.getElementById('email').value.trim();
+  const motivo = document.getElementById('motivo').value;
+  const consultorio = document.getElementById('consultorio').value;
+  const mensaje = document.getElementById('mensaje').value.trim();
+
+  let texto = `Hola Dr. Omar, me gustaría agendar una cita.%0A%0A`;
+  texto += `*Nombre:* ${nombre}%0A`;
+  texto += `*Teléfono:* ${telefono}%0A`;
+  if (email) texto += `*Email:* ${email}%0A`;
+  texto += `*Motivo:* ${motivo}%0A`;
+  if (consultorio) texto += `*Consultorio preferido:* ${consultorio}%0A`;
+  if (mensaje) texto += `%0A*Mensaje:* ${mensaje}%0A`;
+  texto += `%0AQuedo atenta a tu respuesta. ¡Gracias!`;
+
+  const whatsappUrl = `https://wa.me/524451133756?text=${texto}`;
+  window.open(whatsappUrl, '_blank');
+}
+</script>
+
+</body>
+</html>
