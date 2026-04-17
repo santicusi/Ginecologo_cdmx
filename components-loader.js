@@ -7,41 +7,26 @@
 // Cargar componentes reutilizables
 async function loadComponent(selector, file) {
   const element = document.querySelector(selector);
-  if (!element) return false;
+  if (!element) return;
 
   try {
     const response = await fetch(file);
-    if (!response.ok) throw new Error(`No se pudo cargar ${file} (status ${response.status})`);
+    if (!response.ok) throw new Error(`No se pudo cargar ${file}`);
     const html = await response.text();
     element.innerHTML = html;
-    return true;
   } catch (error) {
     console.error(`Error cargando componente ${file}:`, error);
-    // Fallback visible por si se abre con file://
-    element.innerHTML = `<!-- Error cargando ${file}. Asegúrate de estar usando un servidor local (Live Server) o subirlo al hosting. -->`;
-    return false;
   }
 }
 
 // Inicializar todos los componentes al cargar la página
 document.addEventListener('DOMContentLoaded', async () => {
-  // Cargar componentes de forma secuencial y esperar cada uno
-  const results = await Promise.allSettled([
+  // Cargar componentes en paralelo
+  await Promise.all([
     loadComponent('#navbar-placeholder', 'components/navbar.html'),
     loadComponent('#footer-placeholder', 'components/footer.html'),
     loadComponent('#whatsapp-placeholder', 'components/whatsapp-float.html')
   ]);
-
-  // Log del estado de cada componente
-  results.forEach((result, index) => {
-    const names = ['navbar', 'footer', 'whatsapp'];
-    if (result.status === 'rejected' || result.value === false) {
-      console.warn(`⚠️ Componente ${names[index]} no se cargó correctamente.`);
-    }
-  });
-
-  // Esperar un microtick para asegurar que el DOM se actualizó
-  await new Promise(resolve => setTimeout(resolve, 50));
 
   // Inicializar funcionalidades después de cargar
   initNavbar();
@@ -55,15 +40,10 @@ function initNavbar() {
   const toggle = document.querySelector('.navbar-toggle');
   const menu = document.querySelector('.navbar-menu');
 
-  if (!toggle || !menu) {
-    console.warn('Navbar no encontrado en el DOM, se saltan sus funciones.');
-    return;
-  }
+  if (!toggle || !menu) return;
 
   toggle.addEventListener('click', () => {
     menu.classList.toggle('active');
-    const isOpen = menu.classList.contains('active');
-    toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
   });
 
   // Cerrar menú al hacer click en un enlace (mobile)
@@ -71,7 +51,6 @@ function initNavbar() {
     link.addEventListener('click', () => {
       if (window.innerWidth <= 900) {
         menu.classList.remove('active');
-        toggle.setAttribute('aria-expanded', 'false');
       }
     });
   });
@@ -106,8 +85,6 @@ function initFAQ() {
 
 // Animaciones al hacer scroll
 function initScrollAnimations() {
-  if (!('IntersectionObserver' in window)) return;
-
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
