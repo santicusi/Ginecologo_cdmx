@@ -1472,6 +1472,326 @@ footer {
   </div>
 </div>
 
+<!-- ============ PRECIOS / SERVICIOS ============ -->
+<style>
+.precios-section {
+  background: linear-gradient(180deg, var(--crema) 0%, var(--blanco) 100%);
+  padding: 90px 0 100px;
+  position: relative;
+  overflow: hidden;
+}
+
+.precios-section::before {
+  content: '';
+  position: absolute;
+  top: -120px;
+  left: -120px;
+  width: 380px;
+  height: 380px;
+  background: radial-gradient(circle, var(--lavanda-suave) 0%, transparent 70%);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.precios-section::after {
+  content: '';
+  position: absolute;
+  bottom: -120px;
+  right: -120px;
+  width: 380px;
+  height: 380px;
+  background: radial-gradient(circle, var(--rosa) 0%, transparent 70%);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.precios-section .container { position: relative; z-index: 1; }
+
+.precios-header {
+  text-align: center;
+  max-width: 760px;
+  margin: 0 auto 56px;
+}
+
+.precios-header .section-label {
+  display: inline-block;
+}
+
+.precios-header .section-desc {
+  margin: 18px auto 0;
+}
+
+.precios-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 24px;
+}
+
+.precio-card {
+  background: white;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: var(--sombra-suave);
+  border: 1px solid var(--gris-claro);
+  transition: var(--transicion);
+  display: flex;
+  flex-direction: column;
+}
+
+.precio-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--sombra-fuerte);
+  border-color: var(--lavanda);
+}
+
+.precio-card-img {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  background: var(--lavanda-suave);
+  position: relative;
+}
+
+.precio-card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  transition: transform 0.6s ease;
+}
+
+.precio-card:hover .precio-card-img img {
+  transform: scale(1.05);
+}
+
+.precio-card-body {
+  padding: 22px 18px 22px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.precio-card-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.32rem;
+  font-weight: 600;
+  color: var(--morado-profundo);
+  margin-bottom: 6px;
+  line-height: 1.18;
+  letter-spacing: -0.01em;
+}
+
+.precio-card-desc {
+  font-size: 0.85rem;
+  color: var(--texto-suave);
+  line-height: 1.5;
+  margin-bottom: 16px;
+  flex: 1;
+}
+
+.precio-card-precio {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  margin-bottom: 16px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--gris-claro);
+}
+
+.precio-amount {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.05rem;
+  font-weight: 600;
+  color: var(--morado);
+  line-height: 1;
+  letter-spacing: -0.01em;
+}
+
+.precio-currency {
+  font-size: 0.78rem;
+  color: var(--texto-suave);
+  letter-spacing: 0.08em;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.precio-card-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 16px;
+  background: #25D366;
+  color: white;
+  border-radius: 50px;
+  font-size: 13.5px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  box-shadow: 0 4px 14px rgba(37, 211, 102, 0.3);
+  transition: var(--transicion);
+  text-align: center;
+}
+
+.precio-card-btn:hover {
+  background: #1eb558;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(37, 211, 102, 0.45);
+  color: white;
+}
+
+.precio-card-btn svg {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+@media (max-width: 1100px) {
+  .precios-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+  }
+}
+
+@media (max-width: 820px) {
+  .precios-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+  }
+  .precios-section {
+    padding: 70px 0 80px;
+  }
+  .precios-header {
+    margin-bottom: 40px;
+  }
+}
+
+@media (max-width: 520px) {
+  .precios-grid {
+    grid-template-columns: 1fr;
+    max-width: 360px;
+    margin: 0 auto;
+  }
+  .precio-card-title {
+    font-size: 1.4rem;
+  }
+  .precio-amount {
+    font-size: 2.2rem;
+  }
+}
+</style>
+
+<section class="precios-section" id="precios">
+  <div class="container">
+    <div class="precios-header">
+      <span class="section-label">Servicios y Precios</span>
+      <h2 class="section-title">Atención privada con <em>precios claros</em></h2>
+      <p class="section-desc">
+        Reserva por WhatsApp y recibe confirmación en minutos. Cada estudio incluye reporte el mismo día e interpretación con el Dr. Omar Tirado.
+      </p>
+    </div>
+
+    <div class="precios-grid">
+
+      <!-- 1. Check-up Ginecológico -->
+      <div class="precio-card">
+        <div class="precio-card-img">
+          <img src="/consulta1.jpeg" alt="Check-up Ginecológico - exploración mamaria, Papanicolaou, ultrasonido y laboratorios" loading="lazy">
+        </div>
+        <div class="precio-card-body">
+          <h3 class="precio-card-title">Check-up Ginecológico</h3>
+          <p class="precio-card-desc">Exploración mamaria, Papanicolaou, ultrasonido pélvico y orientación.</p>
+          <div class="precio-card-precio">
+            <span class="precio-amount">$1,800</span>
+            <span class="precio-currency">MXN</span>
+          </div>
+          <a href="https://wa.me/525579128393?text=Hola%20Dr.%20Omar%2C%20me%20gustar%C3%ADa%20agendar%20un%20Check-up%20Ginecol%C3%B3gico%20por%20%241%2C800%20MXN." class="precio-card-btn" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.71.306 1.263.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Agendar ahora
+          </a>
+        </div>
+      </div>
+
+      <!-- 2. Ultrasonido Primer Trimestre -->
+      <div class="precio-card">
+        <div class="precio-card-img">
+          <img src="/consulta2.jpeg" alt="Ultrasonido de Primer Trimestre - cromosómico genético, viabilidad y edad gestacional" loading="lazy">
+        </div>
+        <div class="precio-card-body">
+          <h3 class="precio-card-title">Ultrasonido 1er Trimestre</h3>
+          <p class="precio-card-desc">Cromosómico / genético. Confirma viabilidad y edad gestacional.</p>
+          <div class="precio-card-precio">
+            <span class="precio-amount">$2,100</span>
+            <span class="precio-currency">MXN</span>
+          </div>
+          <a href="https://wa.me/525579128393?text=Hola%20Dr.%20Omar%2C%20me%20gustar%C3%ADa%20agendar%20un%20Ultrasonido%20de%20Primer%20Trimestre%20%28cromos%C3%B3mico%20%2F%20gen%C3%A9tico%29%20por%20%242%2C100%20MXN." class="precio-card-btn" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.71.306 1.263.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Agendar ahora
+          </a>
+        </div>
+      </div>
+
+      <!-- 3. Ultrasonido Estructural -->
+      <div class="precio-card">
+        <div class="precio-card-img">
+          <img src="/consulta3.jpeg" alt="Ultrasonido Estructural - anatomía detallada del bebé en semanas 18 a 24 de gestación" loading="lazy">
+        </div>
+        <div class="precio-card-body">
+          <h3 class="precio-card-title">Ultrasonido Estructural</h3>
+          <p class="precio-card-desc">2do trimestre. Anatomía detallada del bebé, ideal entre semanas 18-24.</p>
+          <div class="precio-card-precio">
+            <span class="precio-amount">$2,100</span>
+            <span class="precio-currency">MXN</span>
+          </div>
+          <a href="https://wa.me/525579128393?text=Hola%20Dr.%20Omar%2C%20me%20gustar%C3%ADa%20agendar%20un%20Ultrasonido%20Estructural%20%28Segundo%20Trimestre%29%20por%20%242%2C100%20MXN." class="precio-card-btn" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.71.306 1.263.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Agendar ahora
+          </a>
+        </div>
+      </div>
+
+      <!-- 4. Ultrasonido Crecimiento + Consulta Obstétrica -->
+      <div class="precio-card">
+        <div class="precio-card-img">
+          <img src="/consulta4.jpeg" alt="Ultrasonido de Crecimiento del tercer trimestre con consulta obstétrica incluida" loading="lazy">
+        </div>
+        <div class="precio-card-body">
+          <h3 class="precio-card-title">US Crecimiento + Consulta</h3>
+          <p class="precio-card-desc">3er trimestre. Crecimiento, bienestar fetal y consulta obstétrica incluida.</p>
+          <div class="precio-card-precio">
+            <span class="precio-amount">$1,300</span>
+            <span class="precio-currency">MXN</span>
+          </div>
+          <a href="https://wa.me/525579128393?text=Hola%20Dr.%20Omar%2C%20me%20gustar%C3%ADa%20agendar%20un%20Ultrasonido%20de%20Crecimiento%20%28Tercer%20Trimestre%29%20%2B%20Consulta%20Obst%C3%A9trica%20por%20%241%2C300%20MXN." class="precio-card-btn" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.71.306 1.263.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Agendar ahora
+          </a>
+        </div>
+      </div>
+
+      <!-- 5. Consulta Obstétrica -->
+      <div class="precio-card">
+        <div class="precio-card-img">
+          <img src="/consulta5.jpeg" alt="Consulta Obstétrica - acompañamiento integral durante el embarazo" loading="lazy">
+        </div>
+        <div class="precio-card-body">
+          <h3 class="precio-card-title">Consulta Obstétrica</h3>
+          <p class="precio-card-desc">Acompañamiento integral durante tu embarazo, control prenatal completo.</p>
+          <div class="precio-card-precio">
+            <span class="precio-amount">$1,300</span>
+            <span class="precio-currency">MXN</span>
+          </div>
+          <a href="https://wa.me/525579128393?text=Hola%20Dr.%20Omar%2C%20me%20gustar%C3%ADa%20agendar%20una%20Consulta%20Obst%C3%A9trica%20por%20%241%2C300%20MXN." class="precio-card-btn" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.71.306 1.263.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Agendar ahora
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+<!-- ============ FIN PRECIOS / SERVICIOS ============ -->
+
 <!-- ============ CONDITIONS ============ -->
 <section class="conditions-section" id="condiciones">
   <div class="container">
