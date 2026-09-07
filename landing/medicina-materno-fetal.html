@@ -2297,5 +2297,419 @@ footer {
   });
 </script>
 
+<!-- ============ FLYER PROMOCIONAL DE INICIO (30s) ============ -->
+<style>
+.flyer-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: rgba(31, 27, 46, 0.72);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.45s ease, visibility 0.45s ease;
+}
+.flyer-overlay.is-open { opacity: 1; visibility: visible; }
+
+.flyer-card {
+  position: relative;
+  width: 100%;
+  max-width: 720px;
+  max-height: 92vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--crema);
+  border-radius: 22px;
+  overflow: hidden;
+  box-shadow: 0 30px 80px rgba(31, 27, 46, 0.45);
+  transform: translateY(26px) scale(0.97);
+  transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.flyer-overlay.is-open .flyer-card { transform: translateY(0) scale(1); }
+
+/* Barra de tiempo */
+.flyer-progress {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.18);
+  z-index: 4;
+}
+.flyer-progress span {
+  display: block;
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(90deg, var(--dorado-claro), var(--dorado));
+  transform-origin: left center;
+}
+.flyer-overlay.is-open .flyer-progress span {
+  animation: flyerBar 30s linear forwards;
+}
+@keyframes flyerBar { from { transform: scaleX(1); } to { transform: scaleX(0); } }
+
+/* Boton cerrar */
+.flyer-close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  z-index: 6;
+  width: 46px;
+  height: 46px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid rgba(255, 255, 255, 0.55);
+  border-radius: 50%;
+  background: rgba(31, 27, 46, 0.55);
+  color: #FFFFFF;
+  font-size: 26px;
+  line-height: 1;
+  font-weight: 400;
+  cursor: pointer;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.28);
+  transition: var(--transicion);
+}
+.flyer-close:hover,
+.flyer-close:focus-visible {
+  background: var(--dorado);
+  border-color: #FFFFFF;
+  color: #FFFFFF;
+  transform: rotate(90deg);
+  outline: none;
+}
+
+/* Encabezado */
+.flyer-head {
+  position: relative;
+  padding: 32px 74px 26px 34px;
+  background: linear-gradient(135deg, var(--morado-profundo) 0%, var(--morado) 55%, var(--morado-medio) 100%);
+  color: #FFFFFF;
+  text-align: left;
+}
+.flyer-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  border-radius: 50px;
+  background: var(--dorado);
+  color: #FFFFFF;
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+  animation: flyerPulse 2.4s ease-in-out infinite;
+}
+@keyframes flyerPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(184, 153, 104, 0.55); }
+  50% { box-shadow: 0 0 0 12px rgba(184, 153, 104, 0); }
+}
+.flyer-head h2 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(1.7rem, 4.2vw, 2.4rem);
+  font-weight: 500;
+  line-height: 1.12;
+  margin-bottom: 8px;
+  color: #FFFFFF;
+}
+.flyer-head h2 em { font-style: italic; color: var(--dorado-claro); }
+.flyer-head p {
+  font-size: 13.5px;
+  color: rgba(255, 255, 255, 0.82);
+  margin: 0;
+}
+
+/* Lista de precios */
+.flyer-body {
+  padding: 22px 22px 6px;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.flyer-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+.flyer-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 16px;
+  background: var(--blanco);
+  border: 1px solid var(--gris-claro);
+  border-radius: 14px;
+  text-decoration: none;
+  color: var(--texto);
+  transition: var(--transicion);
+}
+.flyer-item:hover {
+  border-color: var(--dorado);
+  box-shadow: var(--sombra-media);
+  transform: translateY(-2px);
+}
+.flyer-item-info { min-width: 0; }
+.flyer-item-info h3 {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14.5px;
+  font-weight: 700;
+  line-height: 1.25;
+  margin: 0 0 3px;
+  color: var(--morado);
+}
+.flyer-item-info p {
+  font-size: 12px;
+  line-height: 1.35;
+  color: var(--texto-suave);
+  margin: 0;
+}
+.flyer-item-price { text-align: right; flex-shrink: 0; }
+.flyer-item-price .fp-tag {
+  display: block;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--dorado);
+  margin-bottom: 1px;
+}
+.flyer-item-price .fp-num {
+  display: block;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.75rem;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--morado);
+}
+.flyer-item-price .fp-cur {
+  display: block;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  color: var(--texto-suave);
+}
+
+/* Pie */
+.flyer-foot {
+  padding: 16px 22px 22px;
+  text-align: center;
+  background: var(--crema);
+}
+.flyer-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  max-width: 380px;
+  padding: 15px 22px;
+  background: #25D366;
+  color: #FFFFFF;
+  border-radius: 50px;
+  font-size: 15px;
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.32);
+  transition: var(--transicion);
+}
+.flyer-cta:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(37, 211, 102, 0.42); }
+.flyer-cta svg { width: 20px; height: 20px; }
+.flyer-note {
+  display: block;
+  margin-top: 12px;
+  font-size: 11.5px;
+  color: var(--texto-suave);
+}
+.flyer-count { color: var(--morado-medio); font-weight: 600; }
+
+@media (max-width: 620px) {
+  .flyer-overlay { padding: 12px; align-items: flex-start; }
+  .flyer-card { max-height: 94vh; margin-top: 12px; border-radius: 18px; }
+  .flyer-head { padding: 22px 62px 18px 20px; }
+  .flyer-badge { font-size: 9.5px; letter-spacing: 0.12em; padding: 5px 11px; margin-bottom: 11px; }
+  .flyer-head p { font-size: 12.5px; }
+  .flyer-body { padding: 16px 14px 4px; }
+  .flyer-grid { grid-template-columns: 1fr; gap: 9px; }
+  .flyer-item { padding: 12px 14px; }
+  .flyer-item-price .fp-num { font-size: 1.5rem; }
+  .flyer-foot { padding: 14px 14px 18px; }
+}
+</style>
+
+<div class="flyer-overlay" id="flyerPromo" role="dialog" aria-modal="true" aria-labelledby="flyerTitle" aria-hidden="true">
+  <div class="flyer-card">
+
+    <div class="flyer-progress"><span></span></div>
+    <button type="button" class="flyer-close" id="flyerClose" aria-label="Cerrar el anuncio">&times;</button>
+
+    <div class="flyer-head">
+      <span class="flyer-badge">Promoción · Precios especiales</span>
+      <h2 id="flyerTitle">Lo que cuesta cada servicio, <em>sin sorpresas</em></h2>
+      <p>Dr. Omar Tirado · Ginecología y embarazo en CDMX · Resultados el mismo día</p>
+    </div>
+
+    <div class="flyer-body">
+      <div class="flyer-grid">
+
+        <a class="flyer-item" href="https://wa.me/525579128393?text=Hola%20Dr.%20Omar%2C%20vi%20la%20promoci%C3%B3n%20y%20quiero%20agendar%20un%20Check-up%20Ginecol%C3%B3gico%20de%20%241%2C800%20MXN." target="_blank" rel="noopener">
+          <span class="flyer-item-info">
+            <h3>Check-up Ginecológico</h3>
+            <p>Revisión completa: Papanicolaou, ultrasonido y exploración.</p>
+          </span>
+          <span class="flyer-item-price">
+            <span class="fp-tag">Promo</span>
+            <span class="fp-num">$1,800</span>
+            <span class="fp-cur">MXN</span>
+          </span>
+        </a>
+
+        <a class="flyer-item" href="https://wa.me/525579128393?text=Hola%20Dr.%20Omar%2C%20vi%20la%20promoci%C3%B3n%20y%20quiero%20agendar%20una%20Consulta%20Ginecol%C3%B3gica%20de%20%241%2C300%20MXN." target="_blank" rel="noopener">
+          <span class="flyer-item-info">
+            <h3>Consulta Ginecológica</h3>
+            <p>Tu cita con el especialista, sin prisa y con respuestas claras.</p>
+          </span>
+          <span class="flyer-item-price">
+            <span class="fp-tag">Promo</span>
+            <span class="fp-num">$1,300</span>
+            <span class="fp-cur">MXN</span>
+          </span>
+        </a>
+
+        <a class="flyer-item" href="https://wa.me/525579128393?text=Hola%20Dr.%20Omar%2C%20vi%20la%20promoci%C3%B3n%20y%20quiero%20agendar%20un%20Ultrasonido%20de%20Primer%20Trimestre%20de%20%242%2C100%20MXN." target="_blank" rel="noopener">
+          <span class="flyer-item-info">
+            <h3>Ultrasonido 1er Trimestre</h3>
+            <p>Confirma que tu bebé viene bien y cuántas semanas tienes.</p>
+          </span>
+          <span class="flyer-item-price">
+            <span class="fp-tag">Promo</span>
+            <span class="fp-num">$2,100</span>
+            <span class="fp-cur">MXN</span>
+          </span>
+        </a>
+
+        <a class="flyer-item" href="https://wa.me/525579128393?text=Hola%20Dr.%20Omar%2C%20vi%20la%20promoci%C3%B3n%20y%20quiero%20agendar%20un%20Ultrasonido%20Estructural%20de%20%242%2C100%20MXN." target="_blank" rel="noopener">
+          <span class="flyer-item-info">
+            <h3>Ultrasonido Estructural</h3>
+            <p>Revisión a detalle del bebé, entre las semanas 18 y 24.</p>
+          </span>
+          <span class="flyer-item-price">
+            <span class="fp-tag">Promo</span>
+            <span class="fp-num">$2,100</span>
+            <span class="fp-cur">MXN</span>
+          </span>
+        </a>
+
+        <a class="flyer-item" href="https://wa.me/525579128393?text=Hola%20Dr.%20Omar%2C%20vi%20la%20promoci%C3%B3n%20y%20quiero%20agendar%20un%20Ultrasonido%20de%20Crecimiento%20m%C3%A1s%20Consulta%20de%20%241%2C300%20MXN." target="_blank" rel="noopener">
+          <span class="flyer-item-info">
+            <h3>Ultrasonido de Crecimiento</h3>
+            <p>Cómo va creciendo tu bebé. Consulta incluida.</p>
+          </span>
+          <span class="flyer-item-price">
+            <span class="fp-tag">Consulta incluida</span>
+            <span class="fp-num">$1,300</span>
+            <span class="fp-cur">MXN</span>
+          </span>
+        </a>
+
+        <a class="flyer-item" href="https://wa.me/525579128393?text=Hola%20Dr.%20Omar%2C%20vi%20la%20promoci%C3%B3n%20y%20quiero%20agendar%20una%20Consulta%20Obst%C3%A9trica%20de%20%241%2C300%20MXN." target="_blank" rel="noopener">
+          <span class="flyer-item-info">
+            <h3>Consulta de Embarazo</h3>
+            <p>Control de tu embarazo mes a mes, de principio a fin.</p>
+          </span>
+          <span class="flyer-item-price">
+            <span class="fp-tag">Promo</span>
+            <span class="fp-num">$1,300</span>
+            <span class="fp-cur">MXN</span>
+          </span>
+        </a>
+
+      </div>
+    </div>
+
+    <div class="flyer-foot">
+      <a class="flyer-cta" href="https://wa.me/525579128393?text=Hola%20Dr.%20Omar%2C%20vi%20los%20precios%20en%20su%20p%C3%A1gina%20y%20quiero%20agendar%20una%20cita." target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.71.306 1.263.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Agendar por WhatsApp
+      </a>
+      <span class="flyer-note">
+        Precios en pesos mexicanos (MXN) · Este aviso se cierra solo en <span class="flyer-count" id="flyerCount">30</span> s
+      </span>
+    </div>
+
+  </div>
+</div>
+
+<script>
+(function () {
+  var overlay = document.getElementById('flyerPromo');
+  if (!overlay) return;
+
+  var closeBtn = document.getElementById('flyerClose');
+  var counter = document.getElementById('flyerCount');
+  var DURACION = 30;
+  var autoTimer = null;
+  var tickTimer = null;
+  var restantes = DURACION;
+
+  function cerrar() {
+    if (autoTimer) { clearTimeout(autoTimer); autoTimer = null; }
+    if (tickTimer) { clearInterval(tickTimer); tickTimer = null; }
+    overlay.classList.remove('is-open');
+    overlay.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    document.removeEventListener('keydown', onKey);
+    setTimeout(function () {
+      if (overlay.parentNode) overlay.parentNode.removeChild(overlay);
+    }, 600);
+  }
+
+  function onKey(e) {
+    if (e.key === 'Escape' || e.key === 'Esc') cerrar();
+  }
+
+  function abrir() {
+    overlay.classList.add('is-open');
+    overlay.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    if (closeBtn) closeBtn.focus();
+    document.addEventListener('keydown', onKey);
+
+    tickTimer = setInterval(function () {
+      restantes--;
+      if (restantes < 0) restantes = 0;
+      if (counter) counter.textContent = restantes;
+    }, 1000);
+
+    autoTimer = setTimeout(cerrar, DURACION * 1000);
+  }
+
+  if (closeBtn) closeBtn.addEventListener('click', cerrar);
+  overlay.addEventListener('click', function (e) {
+    if (e.target === overlay) cerrar();
+  });
+  Array.prototype.forEach.call(overlay.querySelectorAll('a'), function (a) {
+    a.addEventListener('click', cerrar);
+  });
+
+  // Se muestra una vez por sesion de navegacion
+  var YA_VISTO = 'flyerPreciosVisto';
+  var visto = false;
+  try { visto = sessionStorage.getItem(YA_VISTO) === '1'; } catch (err) { visto = false; }
+
+  if (visto) {
+    if (overlay.parentNode) overlay.parentNode.removeChild(overlay);
+    return;
+  }
+  try { sessionStorage.setItem(YA_VISTO, '1'); } catch (err) {}
+
+  setTimeout(abrir, 1200);
+})();
+</script>
+<!-- ============ FIN FLYER PROMOCIONAL ============ -->
 </body>
 </html>
